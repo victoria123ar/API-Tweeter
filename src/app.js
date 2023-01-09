@@ -29,3 +29,12 @@ app.post('/sign-up', (req, res) => {
     usuarios.push(usuario);
     res.send("OK");
 });
+
+app.post('/tweets', (req, res) => {
+    const tweet = req.body;
+    if (!usuarios.find(i => i.username === tweet.username)) {
+        res.send("UNAUTHORIZED");
+    }
+    tweets.push(tweet);
+    res.send("OK");
+});
